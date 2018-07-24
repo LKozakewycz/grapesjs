@@ -22,6 +22,8 @@ module.exports = env => {
     ];
   } else if (env === 'dev') {
     output.filename = 'dist/grapes.js';
+  } else if (env === 'example') {
+    output.filename = 'examples/mergefield/grapes.js';
   } else {
     const index = 'index.html';
     const indexDev = `_${index}`;
