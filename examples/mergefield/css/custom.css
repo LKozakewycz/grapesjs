@@ -1,0 +1,27 @@
+body {
+    margin:0 !important;
+}
+
+.save-button {
+    background-image: url(../icons/save.png);
+    background-repeat: no-repeat;
+    background-position: center 2px;
+}
+
+.save-button:hover {
+    background-image: url(../icons/save-hover.png);
+}
+
+.gjs-mdl-dialog {
+    background:#fff;
+    margin: 40px auto auto;
+}
+
+.gjs-mdl-title {
+    color:#4e4e4e;
+}
+
+.gjs-mdl-btn-close{
+    opacity:0.6;
+    color: #ff0707;
+}
