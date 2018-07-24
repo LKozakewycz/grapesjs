@@ -114,6 +114,11 @@ module.exports = () => {
       view: require('./view/ComponentTextView')
     },
     {
+      id: 'mergefield',
+      model: require('./model/ComponentMergeField'),
+      view: require('./view/ComponentMergeFieldView')
+    },
+    {
       id: 'default',
       model: Component,
       view: ComponentView
