@@ -34,7 +34,7 @@ const defActions = {
     icon: `<span style="transform:rotate(45deg)">&supdsub;</span>`,
     name: 'link',
     attributes: {
-      style: 'font-size:1.4rem;padding:0 4px 2px;',
+      style: 'font-size:0.8rem;padding:0 4px 2px;',
       title: 'Link'
     },
     result: rte =>
