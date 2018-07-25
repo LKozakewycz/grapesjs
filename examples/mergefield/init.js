@@ -2,7 +2,6 @@
   window.editor = grapesjs.init({
     container: '#gjs',
     components: '', // Load template html here
-    style: '', // Load template css here
     plugins: [
       'gjs-preset-newsletter'
     ],
