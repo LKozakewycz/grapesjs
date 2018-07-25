@@ -71,6 +71,8 @@ export default class Droppable {
       pfx: 'gjs-',
       onStart: () => em.stopDefault(),
       onEndMove: model => {
+        console.log('onEndMove');
+        console.log(model);
         em.runDefault();
         em.set('dragResult', model);
         model && em.trigger('canvas:drop', dt, model);

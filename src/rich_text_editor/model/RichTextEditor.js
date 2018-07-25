@@ -234,6 +234,7 @@ export default class RichTextEditor {
     if (sel && sel.rangeCount) {
       const node = doc.createElement('div');
       const range = sel.getRangeAt(0);
+      console.log(range);
       range.deleteContents();
       node.innerHTML = value;
       Array.prototype.slice.call(node.childNodes).forEach(nd => {

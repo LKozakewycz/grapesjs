@@ -61,6 +61,7 @@ module.exports = ComponentView.extend({
    * @private
    * */
   openModal(e) {
+    console.trace();
     var em = this.opts.config.em;
     var editor = em ? em.get('Editor') : '';
 

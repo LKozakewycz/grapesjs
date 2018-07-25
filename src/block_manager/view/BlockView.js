@@ -54,14 +54,22 @@ module.exports = Backbone.View.extend({
   },
 
   handleDragEnd() {
+    console.log('handleDragEnd');
+
     const { em, model } = this;
     const result = em.get('dragResult');
 
+    console.log(result);
+
     if (result) {
+      console.log('has result');
       const oldKey = 'activeOnRender';
       const oldActive = result.get && result.get(oldKey);
 
+      console.log('activate...');
+
       if (model.get('activate') || oldActive) {
+        console.log('trigger active');
         result.trigger('active');
         result.set(oldKey, 0);
       }

@@ -622,5 +622,6 @@ module.exports = {
 
     em.off('component:update', this.updateAttached, this);
     em.off('change:canvasOffset', this.updateAttached, this);
+    em.off('change:selectedComponent', this.updateToolbar, this);
   }
 };

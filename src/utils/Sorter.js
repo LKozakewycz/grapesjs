@@ -428,7 +428,7 @@ module.exports = Backbone.View.extend({
       if (targetModel.attributes.type === 'text') {
         if (
           this.activeTextModel != null &&
-          this.activeTextModel !== targetModel
+          this.activeTextModel != targetModel
         ) {
           this.setContentEditable(this.activeTextModel, false);
           this.activeTextModel = targetModel;
@@ -440,9 +440,9 @@ module.exports = Backbone.View.extend({
           this.setContentEditable(this.activeTextModel, true);
         }
       }
-
       this.lastDims = dims;
       this.plh.style.display = 'none';
+
       var pos = this.findPosition(dims, rX, rY);
       this.lastPos = pos;
       this.updateTextViewCursorPosition(e);
@@ -1013,7 +1013,10 @@ module.exports = Backbone.View.extend({
     this.toggleSortCursor();
 
     this.toMove = null;
-    isFunction(onEndMove) && moved.forEach(m => onEndMove(m, this));
+    isFunction(onEndMove) &&
+      moved.forEach(m => {
+        return onEndMove(m, this);
+      });
   },
 
   /**
@@ -1040,7 +1043,9 @@ module.exports = Backbone.View.extend({
     droppable =
       validResult.trgModel instanceof Backbone.Collection ? 1 : droppable;
     var modelIsTextable = model.get('textable');
-    var targetIsTextView = validResult.trgModel.attributes.type === 'text';
+    var targetType = validResult.trgModel.attributes.type.toLowerCase();
+    var targetIsTextView = targetType === 'text' || targetType === 'default';
+    console.log(validResult.trgModel);
 
     if (targetCollection && droppable && draggable) {
       index = pos.method === 'after' ? index + 1 : index;
@@ -1060,9 +1065,12 @@ module.exports = Backbone.View.extend({
         opts.avoidUpdateStyle = 1;
       }
 
+      console.log('targetIsTextView = ' + targetIsTextView);
+
       if (targetIsTextView && modelIsTextable) {
         this.activeTextModel.view.enableEditing();
         this.activeTextModel.view.activeRte.insertHTML(model.toHTML({}));
+        created = null;
       } else {
         created = targetCollection.add(modelToDrop, opts);
       }
